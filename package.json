@@ -1,0 +1,20 @@
+{
+  "name": "gamepad-test",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "description": "A modern web-based gamepad testing tool with native OS support.",
+  "author": "Frederic",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1",
+    "gamepad-node": "^1.4.0",
+    "socket.io": "^4.8.3"
+  }
+}

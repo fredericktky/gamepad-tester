@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Gamepad Tester</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); justify-content: center; align-items: center; }
+        .modal-content { background: #1a1a1a; padding: 40px; border-radius: 20px; border: 1px solid #333; text-align: center; box-shadow: 0 0 50px rgba(0,242,255,0.2); }
+        .modal-content h3 { color: #00f2ff; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
+        .modal-content p { color: #888; margin-bottom: 30px; }
+        .btn-group { display: flex; gap: 10px; justify-content: center; }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <span class="glitch" data-text="GAMEPAD">GAMEPAD</span>
+                <span class="sub">TESTER PRO</span>
+            </div>
+            <div class="status-bar">
+                <div id="conn-count">0 Controllers Connected</div>
+                <div id="backend-status" style="margin-left: 20px; font-size: 0.7rem; color: #555;">(Backend: Ready)</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mapping-panel">
+                <h2>Controller Assignment</h2>
+                <div class="mapping-controls" id="mapping-controls">
+                    <!-- Mapping UI will be injected here -->
+                    <p class="empty-msg">Connect a controller to start...</p>
+                </div>
+            </section>
+
+            <section class="controller-grid">
+                <div class="slot" id="slot-0">
+                    <div class="slot-header">SLOT 1</div>
+                    <div class="controller-display">
+                        <div class="not-assigned">NOT ASSIGNED</div>
+                        <div class="controller-visual" id="visual-0" style="display:none;"></div>
+                        <div class="input-data" id="data-0"></div>
+                    </div>
+                </div>
+                <div class="slot" id="slot-1">
+                    <div class="slot-header">SLOT 2</div>
+                    <div class="controller-display">
+                        <div class="not-assigned">NOT ASSIGNED</div>
+                        <div class="controller-visual" id="visual-1" style="display:none;"></div>
+                        <div class="input-data" id="data-1"></div>
+                    </div>
+                </div>
+                <div class="slot" id="slot-2">
+                    <div class="slot-header">SLOT 3</div>
+                    <div class="controller-display">
+                        <div class="not-assigned">NOT ASSIGNED</div>
+                        <div class="controller-visual" id="visual-2" style="display:none;"></div>
+                        <div class="input-data" id="data-2"></div>
+                    </div>
+                </div>
+                <div class="slot" id="slot-3">
+                    <div class="slot-header">SLOT 4</div>
+                    <div class="controller-display">
+                        <div class="not-assigned">NOT ASSIGNED</div>
+                        <div class="controller-visual" id="visual-3" style="display:none;"></div>
+                        <div class="input-data" id="data-3"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div id="mapping-modal" class="modal">
+            <div class="modal-content">
+                <div id="mapping-visual" style="width: 200px; margin: 0 auto 20px;"></div>
+                <h3 id="mapping-title">Mapping Button A</h3>
+                <p id="mapping-instruction">Press the corresponding button on your controller...</p>
+                <div class="btn-group">
+                    <button class="assign-btn" onclick="skipMapping()">Skip</button>
+                    <button class="assign-btn" onclick="closeRemap()">Finish</button>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>Press any button on your controller to wake it up.</p>
+        </footer>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js?v=2"></script>
+</body>
+</html>
